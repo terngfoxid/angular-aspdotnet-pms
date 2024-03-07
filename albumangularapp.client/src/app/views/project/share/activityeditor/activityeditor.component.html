@@ -1,0 +1,40 @@
+<table>
+  <tr *ngIf="Activity.lv == 1; else elseBlock">
+    <td style="width: 40%;">
+        <form class="" [formGroup]="CreateForm" onc>
+          <input type="text" formControlName="Detail" class="" id="DetailInput" placeholder="Detail" (change)="changeValue()">
+        </form>
+    </td>
+    <td style="width: 40%;">
+
+    </td>
+    <td style="width: 20%;">
+        <button type=button (click)="addActivity(Activity.lv)">Add Activity</button>
+        <button type=button (click)="remove()">Delete</button>
+    </td>
+  </tr>
+  <ng-template #elseBlock>
+    <tr>
+      <td style="width: 40%;">
+          
+      </td>
+      <td style="width: 40%;">
+        <form class="" [formGroup]="CreateForm">
+          <input type="text" formControlName="Detail" class="" id="DetailInput" placeholder="Detail" (change)="changeValue()">
+        </form>
+      </td>
+      <td style="width: 20%;">
+          <button type=button (click)="remove()">Delete</button>
+      </td>
+    </tr>
+  </ng-template>
+
+  <tbody *ngFor="let Activity of Activity.inverseParent; let index=index;">
+    <tr *ngIf="Activity.isDelete != true;">
+      <td colspan="3">
+        <app-activityeditor [Activity]="Activity">
+        </app-activityeditor>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,41 @@
+<p>Album Manager</p>
+<div class="">
+  <button routerLink="/edit_album" class="" Button>Back</button>
+</div>
+
+<form class="" [formGroup]="CreateForm" (ngSubmit)="onSubmit()">
+  <table>
+    <thead>
+      <tr>
+        <th>
+          ชื่อ
+        </th>
+        <th>
+          ปก
+        </th>
+        <th>
+          จัดการ
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr >
+        <td style="width: 20%;">
+          <div class="mb-3 flex justify-center gap-x-[5px] items-center">
+            <input type="text" formControlName="Name" class="" id="NameInput" placeholder="ชื่อ Album">
+          </div>
+        </td>
+        <td style="width: 50%;">
+          <div class="mb-3 flex justify-center gap-x-[5px] items-center">
+            <input type="text" formControlName="CoverImageUrl" class="" id="CoverImageUrlInput" placeholder="ลิงค์ภาพปก">
+          </div>
+        </td>
+        <td style="width: 30%;">
+          <button class="" type="submit">
+            Submit
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>

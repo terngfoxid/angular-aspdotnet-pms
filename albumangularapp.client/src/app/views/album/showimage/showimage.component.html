@@ -1,0 +1,15 @@
+<p>Show Image Album {{Album.name}}</p>
+<div class="">
+  <button routerLink="/" class="" Button>Back</button>
+</div>
+<div>
+  <img [src]="Album.coverImageUrl" width="200px">
+</div>
+<div class="grid-container">
+  <div class="grid-item" *ngFor="let Image of Album.images; let index=index;">
+    <p>No.{{index}}</p>
+    <div>
+      <img [src]="Image.imageUrl">
+    </div>
+  </div>
+</div>

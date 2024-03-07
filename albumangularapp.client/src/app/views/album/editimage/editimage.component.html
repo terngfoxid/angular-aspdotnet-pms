@@ -1,0 +1,33 @@
+<p>Album Manager</p>
+<div class="">
+  <button routerLink="/edit_album/{{Image.albumId}}/edit_image" class="" Button>Back</button>
+</div>
+
+<form class="" [formGroup]="EditForm" (ngSubmit)="onSubmit()">
+  <table>
+    <thead>
+      <tr>
+        <th>
+          ภาพ
+        </th>
+        <th>
+          จัดการ
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr >
+        <td style="width: 50%;">
+          <div class="mb-3 flex justify-center gap-x-[5px] items-center">
+            <input type="text" formControlName="ImageUrl" class="" id="CoverImageUrlInput" placeholder="ลิงค์ภาพ">
+          </div>
+        </td>
+        <td style="width: 50%;">
+          <button class="" type="submit">
+            Submit
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>

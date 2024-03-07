@@ -1,0 +1,28 @@
+<p>Image Manager : </p>
+<div class="">
+  <button routerLink="/edit_album" class="" Button>Back</button>
+  <button routerLink="/edit_album/{{Album.id}}/add_image" class="" Button>เพิ่มรูปภาพ</button>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>
+        ภาพ
+      </th>
+      <th>
+        จัดการ
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let image of Album.images; let index=index;">
+      <td style="width: 50%;">
+        <img [src]="image.imageUrl">
+      </td>
+      <td style="width: 50%;">
+        <button routerLink="/edit_album/{{Album.id}}/edit_image/{{image.id}}" class="" Button>แก้ไข</button>
+        <button type=button (click)="confirmDelete('name',image.id)">ลบ</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

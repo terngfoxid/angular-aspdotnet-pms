@@ -1,0 +1,70 @@
+<p>Project Manager</p>
+<div class="">
+  <button routerLink="/edit_project" class="" Button>Back</button>
+</div>
+<div>
+  <button type=button (click)="Project.addNewActivity()">Add Activity</button>
+</div>
+<form >
+  <div class="form-group">
+    <label for="img-path">ชื่อ Project</label>
+    <input type="text" class="form-control" id="name" name="name" required [(ngModel)]="Project.name">
+  </div>
+  <div class="form-group">
+    <label for="img-path">วันที่เริ่มต้น</label>
+    <input type="date" class="form-control" id="startDate" name="startDate" required [value]="startDate" (change)="changeValueStartDate($event)">
+  </div>
+  <div class="form-group">
+    <label for="img-path">วันที่สิ้นสุด</label>
+    <input type="date" class="form-control" id="endDate" name="endDate" required [value]="endDate" (change)="changeValueEndDate($event)">
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 40%;">
+          กิจกรรม
+        </th>
+        <th style="width: 40%;">
+          กิจกรรมย่อย
+        </th>
+        <th style="width: 20%;">
+          จัดการ
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let Activity of Project.activities">
+        <ng-container *ngTemplateOutlet="recursive; context {$implicit: Activity}"></ng-container>
+      </ng-container>
+      <ng-template #recursive let-current>
+        <ng-container *ngIf="current.isDelete != true">
+          <tr *ngIf="current.lv == 1; else elseBlock">
+            <td>หลัก
+              {{current.detail}}
+              <input type="text" class="form-control" id="detail" name="detail" required [value]="current.detail" (change)="current.changeValue($event)">
+            </td>
+            <td></td>
+            <td>
+              <button (click)="current.addNewActivity()">Add ย่อย</button>
+              <button (click)="current.deleteActivity()">ลบ</button>
+            </td>
+          </tr>
+          <ng-template #elseBlock>
+            <tr>
+              <td></td>
+              <td>ย่อย
+                {{current.detail}}
+                <input type="text" class="form-control" id="detail" name="detail" required [value]="current.detail" (change)="current.changeValue($event)">
+              </td>
+              <td><button (click)="current.deleteActivity()">ลบ</button></td>
+            </tr>
+          </ng-template>
+          <ng-container *ngFor="let Activity of current.inverseParent">
+            <ng-container *ngTemplateOutlet="recursive; context {$implicit: Activity}"></ng-container>
+          </ng-container>
+        </ng-container>
+      </ng-template>
+    </tbody>
+  </table>
+  <button type=button (click)="onSubmit()">Submit</button>
+</form>

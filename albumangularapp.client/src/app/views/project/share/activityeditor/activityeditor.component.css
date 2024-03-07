@@ -1,0 +1,28 @@
+table {
+    border: none;
+    width: 100%;
+    margin: 0;
+    border-spacing:0px;
+}
+
+thead{
+    background-color: #cccccc;
+}
+
+tr{
+    height: 50px;
+}
+
+th{
+    padding: 5px;
+}
+
+td{
+    padding: 0px;
+
+    img {
+        object-fit: cover;
+        width: 100%;
+        max-height: 250px;
+    }
+}

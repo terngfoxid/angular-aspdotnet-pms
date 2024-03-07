@@ -1,0 +1,10 @@
+<div class="grid-container">
+  <div class="grid-item" *ngFor="let Album of AllALbum; let index=index;">
+    <button routerLink="/show_album/{{Album.id}}" Button>
+      <p>No.{{index}} {{Album.name}}</p>
+      <div>
+        <img [src]="Album.coverImageUrl">
+      </div>
+    </button>
+  </div>
+</div>

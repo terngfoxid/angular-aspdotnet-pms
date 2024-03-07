@@ -1,0 +1,35 @@
+<p>Project Manager</p>
+<div class="">
+  <button routerLink="/add_project" class="" Button>Add Project</button>
+  <button routerLink="/add_project2" class="" Button>Add Project Modify</button>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>
+        ชื่อ
+      </th>
+      <th>
+        วันที่เริ่มต้นสิ้นสุด
+      </th>
+      <th>
+        จัดการ
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let Project of AllProject; let index=index;">
+      <td style="width: 20%;">
+        {{Project.name}}
+      </td>
+      <td style="width: 50%;">
+        {{Project.startDate}} ถึง {{Project.endDate}}
+      </td>
+      <td style="width: 30%;">
+        <button routerLink="/edit_project/{{Project.id}}" class="" Button>Edit</button>
+        <button routerLink="/edit_project2/{{Project.id}}" class="" Button>Edit Modify</button>
+        <button type=button (click)="confirmDelete(Project.name || '', Project.id)">ลบ</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

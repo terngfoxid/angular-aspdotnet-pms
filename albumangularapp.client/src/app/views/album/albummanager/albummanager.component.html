@@ -1,0 +1,34 @@
+<p>Album Manager</p>
+<div class="">
+  <button routerLink="/add_album" class="" Button>Add Album</button>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>
+        ชื่อ
+      </th>
+      <th>
+        ปก
+      </th>
+      <th>
+        จัดการ
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let Album of AllAlbum; let index=index;">
+      <td style="width: 20%;">
+        {{Album.name}}
+      </td>
+      <td style="width: 50%;">
+        <img [src]="Album.coverImageUrl">
+      </td>
+      <td style="width: 30%;">
+        <button routerLink="/edit_album/{{Album.id}}/edit_image" class="" Button>จัดการรูปภาพ</button>
+        <button routerLink="/edit_album/{{Album.id}}" class="" Button>Edit</button>
+        <button type=button (click)="confirmDelete(Album.name || '', Album.id)">ลบ</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,1 @@
+C:\Users\terng\source\repos\AlbumAngularApp\albumangularapp.client\obj\Debug\albumangularapp.client.esproj.CoreCompileInputs.cache
